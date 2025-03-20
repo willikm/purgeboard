@@ -1,0 +1,408 @@
+body {
+    background: rgb(3, 0, 17);
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 500%;
+    color: rgb(118, 11, 11);
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    margin: 0px;
+}
+
+h2 {
+    font-size: 24pt;
+    color: rgb(192, 29, 29);
+    font-family: "Gloria Hallelujah", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    text-align: center;
+    text-wrap: nowrap;
+    padding: 0px 10%;
+    margin: 0px;
+    display: block;
+}
+
+.center {
+    position: fixed;
+    inset: 0px;
+    width: 50%;
+    height: 50%;
+    max-width: 100vw;
+    max-height: 100dvh;
+    margin: auto;
+}
+
+#options {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    display: flex;
+    flex-flow: row;
+    gap: 10%;
+}
+
+#options > svg {
+    filter: drop-shadow(0 0 8px #000000);
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    flex: 1 1 100px;
+}
+
+.flex-container {
+    padding: 2% 0 0 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.flex-item {
+    padding: 10px;
+    flex: 1 1 100px;
+    text-align: center;
+}
+
+.name {
+    font-size: 150%;
+    color: rgb(244, 244, 244);
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+.player {
+    position: relative;
+}
+
+.player.alive > .avatar > .skull {
+    display: none;
+}
+
+.player.dead > .avatar > .skull {
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    top: 10px;
+    z-index: 999;
+    left: 10px;
+    color: white;
+}
+
+.player > .avatar > img {
+    height: 150px;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+.player > .avatar { 
+    border-radius: 100%;
+    flex: 20%;
+    transition: all 0.3s ease;
+    margin: 0px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.player > .avatar:hover {
+    transform: scale(1.1);
+}
+
+.player.dead > .avatar:hover {
+    transform: scale(1.1);
+}
+
+.player.alive > .avatar { 
+    background: transparent;
+}
+
+.player.dead > .avatar { 
+    background: red;
+}
+
+.player.alive > .avatar > img { 
+    border: 5px solid transparent;
+    mix-blend-mode: normal;
+    padding: 10px;
+}
+
+.player.dead > .avatar > img { 
+    border: 5px solid red;
+    mix-blend-mode: multiply;
+    padding: 10px 10px 5px 10px;
+}
+
+.player.dead > .name {
+    padding: 5px 0 0 0;
+}
+
+.flex-item.banner {
+    display: block;
+    position: absolute;
+    top: 20px;
+    text-align: center;
+}
+
+#configuration {
+    padding: 2% 5%;
+    min-width: 800px;
+}
+
+#configuration > .player-input {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2% 0 0 0;
+    gap: 2%;
+}
+
+#configuration > .player-input > .player-index {
+    font-size: 20pt;
+    color: white;
+    font-family: "Gloria Hallelujah", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    margin: 0px;
+    width: 0%;
+}
+
+#configuration > .player-input > .player-image {
+    flex-direction: column;
+    flex: 1;
+}
+
+#configuration > .player-input > .player-image img {
+    height: 3vw;
+    border-radius: 50px;
+}
+
+#configuration > .player-input > .player-image input[type="file"] {
+    display: none;
+}
+
+#configuration > .player-input > .player-image .image-upload {
+    display: inline-block;
+    height: 3vw;
+    width: 3vw;
+    cursor: pointer;
+}
+
+#configuration > .player-input > .player-name {
+    border-radius: 50px;
+    line-height: 3;
+    padding: 0 0 0 5%;
+    font-size: medium;
+    border: 0;
+    flex-direction: column;
+    flex: 2;
+}
+
+#configuration > .player-input > .player-name:focus {
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 0px 5px rgb(209, 47, 47);
+}
+
+#configuration > .player-input > .player-gender {
+    min-width: 110px;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+#configuration > .player-input > .player-gender::before,
+#configuration > .player-input > .player-gender::after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1rem;
+    pointer-events: none;
+}
+
+#configuration > .player-input > .player-gender::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 40%;
+}
+
+#configuration > .player-input > .player-gender::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 55%;
+}
+    
+#configuration > .player-input > .player-gender select {
+    appearance: none;
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.675em 1em 0.675em 1em;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 50px;
+    color: black;
+    cursor: pointer;
+}
+
+#configuration > .player-input > .remove-player {
+    flex-direction: column;
+    flex: none;
+    height: 3vw;
+    margin-left: auto;
+    cursor: pointer;
+    fill: #FFFFFF;
+    transition: fill 0.2s ease;
+}
+
+#configuration > .player-input > .remove-player:hover {
+    fill: rgb(192, 29, 29);
+}
+
+#configuration > .add-player {
+    text-align: left;
+    color: white;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+    transition: color 0.2s ease;
+}
+
+#configuration > .add-player:hover {
+    color: grey;
+}
+
+#configuration > .add-player svg {
+    height: 3vw;
+    fill: #FFFFFF;
+}
+
+#configuration > .add-player:hover svg {
+    height: 3vw;
+    fill: grey;
+}
+
+#configuration > .add-player p {
+    font-size: 20pt;
+    font-family: "Gloria Hallelujah", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    margin: 0px;
+}
+
+.modal {
+    padding: 0;
+    background: #444444;
+    border: 5px solid #a81b1b;
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px;
+    text-align: center;
+    min-width: 400px;
+    overflow-y: auto;
+    transition: box-shadow 2s ease;
+}
+
+.modal.masked {
+    box-shadow: 0px 0px 30px, inset 0 -100px 100px -100px rgb(5, 5, 5);
+    transition: box-shadow 2s ease-out;
+}
+
+.modal > .close {
+    width: 4%;
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    cursor: pointer;
+}
+
+#purge {
+    min-height: 90%;
+}
+
+#purge > .skull {
+    width: 40%;
+    height: 40%;
+    padding: 5%;
+}
+
+#purge > .flex-input {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2%;
+    gap: 2%;
+}
+
+#purge > .flex-input > .textbox {
+    border-radius: 50px;
+    line-height: 5;
+    color: #FFFFFF;
+    padding: 0 0 0 5%;
+    font-size: medium;
+    border: 0;
+    flex-direction: column;
+    flex: 2;
+}
+
+#purge > .flex-input > .textbox:focus {
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 0px 5px rgb(209, 47, 47);
+}
+
+#purge > .flex-input > .validator {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-radius: 50px;
+    border: 0;
+}
+
+#purge > .flex-input > .validator.positive {
+    cursor: pointer;
+    background: rgb(0, 61, 0);
+    box-shadow: inset 0px 0px 0px 5px green;
+}
+
+#purge > .flex-input > .validator > .fingerprint {
+    color: #808080;
+}
+
+#purge > .flex-input > .validator.positive > .fingerprint {
+    color: green;
+}
+
+#purge > .flex-input > .validator.negative > .fingerprint {
+    color: red;
+}
+
+.counter {
+    margin: 0;
+    padding: 0;
+    z-index: 1005;
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 100vh;
+    text-shadow: 10px 10px 30px black;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+    body {
+        background-image: none;
+    }
+
+    .flex-item {
+        flex: 20%;
+    }
+}
